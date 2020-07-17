@@ -1,7 +1,9 @@
-﻿namespace Nutela.Interfaces
+﻿namespace Nutela
 {
     public interface IUpdate
     {
-        void Update();
+        void NUpdate();
+
+        void NFixedUpdate();
     }
 }
