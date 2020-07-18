@@ -3,23 +3,19 @@ namespace Nutela.Player
 {
     public class PlayerInput
     {
-        private float _h;
-        private float _v;
+        
+        private float _x;
+        private float _y;
         private KeyCode _jump;
         
-        public float H
+        public float AxisX()
         {
-            get => _h;
-            set => _h = value;
+            return Input.GetAxis("Horizontal");
         }
 
-        public float V
+        public float AxisY()
         {
-            get => _v;
-            set => _v = value;
+            return Input.GetAxis("Horizontal");
         }
-
-        
-
     }
 }
