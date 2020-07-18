@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using Core;
 
 namespace Nutela.Player
 {
-    public class PlayerController : IUpdate
+    public class PlayerController : Controller, IUpdate
     {
         private const string PlayerDataFileName = "PlayerDocument";
         
@@ -18,13 +19,19 @@ namespace Nutela.Player
             _playerInput = new PlayerInput();
             _player = new Player(_playerData);
             Vector3 pos = new Vector3(_playerData.X, _playerData.Y, _playerData.Z);
-            _playerView = new PlayerView(_playerData.Prefab.transform, _playerData.Prefab.gameObject, pos);
+            _playerView = new PlayerView(_playerData.Prefab.gameObject, pos);
+            
             
         }
         
         public void NUpdate()
         {
-            
+            _playerView.Move(
+                _playerInput.AxisX(), 
+                _playerInput.AxisY(), 
+                _player.Speed, 
+                _player.LateralSpeed, 
+                Time.deltaTime);
         }
 
         public void NFixedUpdate()

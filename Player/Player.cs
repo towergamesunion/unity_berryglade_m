@@ -12,7 +12,16 @@ namespace Nutela.Player
         private Vector3 _position;
         private PlayerData _playerData;
 
-        
+        public float Speed => _speed;
+
+        public float LateralSpeed => _lateralSpeed;
+
+        public string Name => _name;
+
+        public Vector3 Position => _position;
+
+        public PlayerData PlayerData => _playerData;
+
         public Player(PlayerData data)
         {
             _name = data.PlayerName;

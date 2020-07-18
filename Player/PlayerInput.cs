@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using Nutela.Utilities;
 namespace Nutela.Player
 {
     public class PlayerInput
@@ -10,12 +11,14 @@ namespace Nutela.Player
         
         public float AxisX()
         {
+            Debugger.Log(Input.GetAxis("Horizontal"));
             return Input.GetAxis("Horizontal");
         }
 
         public float AxisY()
         {
-            return Input.GetAxis("Horizontal");
+            Debugger.Log(Input.GetAxis("Vertical"));
+            return Input.GetAxis("Vertical");
         }
     }
 }

@@ -8,13 +8,13 @@ namespace Nutela.Player
         private GameObject _gameObject;
         
         public PlayerView(
-            Transform playerTransform, 
             GameObject gameObj,
             Vector3 position)
         {
             
-            _transform = playerTransform;
-            _gameObject = gameObj;
+            _gameObject = UnityEngine.Object.Instantiate(gameObj);
+            _transform = _gameObject.transform;
+            
             if (_transform != null)
             {
                 _transform.position = position;
@@ -28,11 +28,12 @@ namespace Nutela.Player
             float y, 
             float speed, 
             float lateralSpeed,
-            float deltaTime,
-            Transform t)
+            float deltaTime)
         {
-            Vector3 velocity = new Vector3(x * speed * lateralSpeed * deltaTime, y * speed * deltaTime, 0);
-            Vector3 startPos = t.position;
+            float hAxis = x * speed * lateralSpeed * deltaTime;
+            float vAxis = y * speed * deltaTime;
+            Vector3 velocity = new Vector3(hAxis, 0, vAxis);
+            Vector3 startPos = _transform.position;
             Vector3 endPos = startPos + velocity;
             Vector3 resultPos = Lerp.LerpPosition(startPos, endPos, 0.33f);
             _transform.position = resultPos;
