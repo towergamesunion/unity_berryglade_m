@@ -4,7 +4,7 @@
 
 namespace Nutela.Player
 {
-    public class Player
+    public class Player : Model
     {
         private float _speed;
         private float _lateralSpeed;
